@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <!-- Bootstrap CSS, Fontawesome CSS -->
+    <link href="/lib/bootstrap/bootstrap.4.2.1.min.css" rel="stylesheet">
+    <link href="/lib/fontawesome/css/all.5.6.3.min.css" rel="stylesheet">
+    <link href="/lib/bootstrap.selectpicker.1.13.14/bootstrap-select.min.css" rel="stylesheet">
+    <link href="/lib/DataTables/datatables.min.css" rel="stylesheet">
+    <!-- Scrollbar Custom CSS -->
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"
+          rel="stylesheet">-->
+    <link href="/lib/nav.min.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+
+    <title>NKCX</title>
+</head>
+<body class="container">
+<div class="mt-5" style="text-align: center">
+    <img alt="NKCX Icon" height="128px" id="covid19Icon" src="/images/logo.png">
+</div>
+<div class="card w-50 ml-auto mr-auto mt-1">
+    <div class="card-body">
+        <form id="idFormLogin">
+            <div class="input-group mb-2">
+                <label class="sr-only">Username</label>
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-user"></i></div>
+                </div>
+                <input class="form-control" name="username" placeholder="Username" type="text">
+            </div>
+            <div class="input-group mb-2">
+                <label class="sr-only">Password</label>
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-key"></i></div>
+                </div>
+                <input class="form-control" name="password" placeholder="Password" type="password">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" name="login"><i class="fas fa-sign-in-alt"></i> Login</button>
+            </div>
+        </form>
+        <button class="btn btn-outline-danger btn-block" data-target=".password" data-toggle="collapse">Forgot Password
+            <i
+                    class="fas fa-question"></i></button>
+    </div>
+</div>
+
+<div class="card w-50 ml-auto mr-auto mt-5 password collapse">
+    <div class="card-body">
+        <!--<h5 class="card-title">Please Login</h5>-->
+        <form id="idFormForgotPassword">
+            <div class="input-group mb-2">
+                <label class="sr-only">Username</label>
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-user-check"></i></div>
+                </div>
+                <input class="form-control" name="username" placeholder="Username (Email / Mobile)" type="text">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" name="getVerificationCode" type="submit">Get Password Reset
+                    Verification
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card w-50 ml-auto mr-auto mt-5 password collapse">
+    <div class="card-body">
+        <!--<h5 class="card-title">Please Login</h5>-->
+        <form id="idFormResetPassword">
+            <div class="input-group mb-2">
+                <label class="sr-only">Verification Code</label>
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-user-check"></i></div>
+                </div>
+                <input class="form-control" name="verificationCode" placeholder="Verification Code" type="text">
+            </div>
+            <div class="input-group mb-2">
+                <label class="sr-only">New Password</label>
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                </div>
+                <input class="form-control" id="newPassword" name="newPassword" placeholder="New Password"
+                       type="password">
+            </div>
+            <div class="input-group mb-2">
+                <label class="sr-only">Confirm Password</label>
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                </div>
+                <input class="form-control" name="confirmPassword" placeholder="Confirm Password"
+                       type="password">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" name="resetPassword" type="submit">Reset Password</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal for alert messages -->
+<div class="modal fade" id="idModalAlert" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Response</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/lib/jquery/jquery-3.3.1.min.js"></script>
+<script src="/lib/popper/popper.min.js"></script>
+<script src="/lib/bootstrap/bootstrap.4.2.1.min.js"></script>
+<script src="/lib/jquery_validation/jquery.validate.1.19.0.min.js"></script>
+<script src="/lib/bootstrap.selectpicker.1.13.14/bootstrap-select.min.js"></script>
+<script src="/lib/DataTables/datatables.min.js"></script>
+<!-- jQuery Custom Scroller CDN -->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>-->
+<script src="/lib/nav.min.js" type="text/javascript"></script>
+<script src="/js/view/LoginView.js" type="module"></script>
+
+</body>
+</html>

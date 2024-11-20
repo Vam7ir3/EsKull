@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <!-- Bootstrap CSS, Fontawesome CSS -->
+    <link href="/lib/bootstrap/bootstrap.4.2.1.min.css" rel="stylesheet">
+    <link href="/lib/fontawesome/css/all.5.6.3.min.css" rel="stylesheet">
+    <link href="/lib/bootstrap.selectpicker.1.13.14/bootstrap-select.min.css" rel="stylesheet">
+    <link href="/lib/DataTables/datatables.min.css" rel="stylesheet">
+    <!-- Scrollbar Custom CSS -->
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"
+          rel="stylesheet">-->
+    <link href="/lib/nav.min.css" rel="stylesheet">
+    <link href="/css/custom.css" rel="stylesheet">
+
+    <title>NKCX | User</title>
+</head>
+<body class="container-fluid">
+
+<!-- Navigation Menu -->
+
+<!-- Sidebar Nav Menu trying out -->
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar"></nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button class="btn btn-lg red" id="sidebarCollapse" type="button">
+                    <i class="fas fa-bars"></i>
+                    <span></span>
+                </button>
+                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                        class="btn btn-dark d-inline-block d-lg-none ml-auto" data-target="#navbarSupportedContent"
+                        data-toggle="collapse" type="button">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="idButtonLogout"><span class="color-red"><i
+                                    class="fas fa-sign-out-alt"></i> Logout</span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="card">
+            <div class="card-header">
+
+                <h5 class="float-left">User</h5>
+                <button class="btn btn-link float-right" id="idBtnPopAddUser"><i class="fas fa-plus-circle"></i>
+                    User
+                </button>
+
+
+            </div>
+
+            <div class="clearfix mt-5 mb-2">
+                <div class="col-4">
+                    <select class="form-control selectpicker" id="idSelectUserRole"
+                            title="Filter by Role"></select>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <table class="table table-striped table-bordered table-hover" id="idTableUser">
+                    <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Name</th>
+                        <th>Mobile Number</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Registered Date</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot></tfoot>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- End -->
+
+<!-- Modal for User -->
+<div class="modal fade" data-backdrop="static" id="idModalUser" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <!-- User Show -->
+                <div id="idUserShow">
+                    <ul class="list-group list-group-flush">
+                        <li class="row list-group-item">
+                            <span class="col-sm-3 font-weight-bold">Role:</span>
+                            <span class="col-sm-9" id="idRoleShow"></span>
+                        </li>
+                        <li class="row list-group-item">
+                            <span class="col-sm-3 font-weight-bold">Name:</span>
+                            <span class="col-sm-9" id="idNameShow"></span>
+                        </li>
+                        <li class="row list-group-item">
+                            <span class="col-sm-3 font-weight-bold">Gender:</span>
+                            <span class="col-sm-9" id="idGenderShow"></span>
+                        </li>
+                        <li class="row list-group-item">
+                            <span class="col-sm-3 font-weight-bold">Date of Birth:</span>
+                            <span class="col-sm-9" id="idDateOfBirthShow"></span>
+                        </li>
+                        <li class="row list-group-item">
+                            <span class="col-sm-3 font-weight-bold">Mobile Number:</span>
+                            <span class="col-sm-9" id="idMobileNumberShow"></span>
+                        </li>
+                        <li class="row list-group-item">
+                            <span class="col-sm-3 font-weight-bold">Email Address:</span>
+                            <span class="col-sm-9" id="idEmailAddressShow"></span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End -->
+
+                <!-- User Form Add -->
+                <form id="idFormUserAdd">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">User's Role</label>
+                        <div class="col-sm-9">
+                            <select class="selectpicker show-tick" data-width="100%" name="userRole"
+                                    title="Select">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">First Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" name="firstName" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">Last Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" name="lastName" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">Gender</label>
+                        <div class="col-sm-9">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" id="genderMaleAdd" name="gender" type="radio"
+                                       value="MALE">
+                                <label class="form-check-label" for="genderMaleAdd">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" id="genderFemaleAdd" name="gender" type="radio"
+                                       value="FEMALE">
+                                <label class="form-check-label" for="genderFemaleAdd">Female</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" id="genderOtherAdd" name="gender" type="radio"
+                                       value="OTHER">
+                                <label class="form-check-label" for="genderOtherAdd">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">Date of Birth</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" name="dateOfBirth" type="date">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">Mobile Number</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" name="mobileNumber" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">Email Address</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" name="emailAddress" type="email">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">Password</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" name="password" type="password">
+                        </div>
+                    </div>
+                    <div class="offset-3">
+                        <button class="btn btn-primary" name="add" type="submit">Add</button>
+                    </div>
+                </form>
+                <!-- End -->
+
+                <!-- User Form Update -->
+                <form id="idFormUserUpdate">
+                    <input name="id" type="hidden">
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">User's Role</label>
+                        <div class="col-sm-9">
+                            <select class="selectpicker show-tick" data-width="100%" name="userRole"
+                                    title="Select">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">First Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" name="firstName" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">Last Name</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" name="lastName" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">Gender</label>
+                        <div class="col-sm-9">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" id="genderMaleUpdate" name="gender" type="radio"
+                                       value="MALE">
+                                <label class="form-check-label" for="genderMaleUpdate">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" id="genderFemaleUpdate" name="gender" type="radio"
+                                       value="FEMALE">
+                                <label class="form-check-label" for="genderFemaleUpdate">Female</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" id="genderOtherUpdate" name="gender" type="radio"
+                                       value="OTHER">
+                                <label class="form-check-label" for="genderOtherUpdate">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">Date of Birth</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" name="dateOfBirth" type="date">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">Mobile Number</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" name="mobileNumber" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label text-right">Email Address</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" name="emailAddress" type="email">
+                        </div>
+                    </div>
+                    <div class="offset-3">
+                        <button class="btn btn-primary" name="update" type="submit">Update</button>
+                    </div>
+                </form>
+                <!-- End -->
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End -->
+
+<!-- User delete -->
+<div class="modal fade" id="idModalUserDelete" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Delete User</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p>Are you sure you want to delete this user permanently?</p>
+                <p>All the data related to this user will be deleted as well permanently.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button>
+                <button class="btn btn-primary" id="idBtnUserDelete" type="button">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End -->
+
+
+<!-- Answer delete -->
+<div class="modal fade" id="idModalAnswerDelete" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Answers</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p>Are you sure you want to delete answers of this user permanently?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button>
+                <button class="btn btn-primary" id="idBtnAnswerDelete" type="button">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End -->
+
+<!-- Modal for alert messages -->
+<div class="modal fade" id="idModalAlert" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Response</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/lib/jquery/jquery-3.3.1.min.js"></script>
+<script src="/lib/popper/popper.min.js"></script>
+<script src="/lib/bootstrap/bootstrap.4.2.1.min.js"></script>
+<script src="/lib/jquery_validation/jquery.validate.1.19.0.min.js"></script>
+<script src="/lib/bootstrap.selectpicker.1.13.14/bootstrap-select.min.js"></script>
+<script src="/lib/DataTables/datatables.min.js"></script>
+<script src="/js/util/DataTableUtil.js"></script>
+<!-- jQuery Custom Scroller CDN -->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>-->
+<script src="/lib/nav.min.js" type="text/javascript"></script>
+<script src="/js/view/UserView.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+1) How to add default authority to Admin Role?
+    - Refer V1_1_3__Insert_Authority.sql
+
+2) How to update existing API for example "/api/sample_session"
+    - Refer at SampleSessionController.java
+    - Refer at SampleSessionService.java
+    - Refer at SampleSessionRepo.java
+    - Refer at SampleSessionEntity.java
+
+3) How to save Sample Data for example "/api/sample"
+    - Refer at SampleController.java
+    - Refer at SampleService.java
+    - Refer to the sampleRepo.java
+    - Refer at SampleEntity.java
+    - Refer at SampleSessionEntity.java
+    - Refer to the created Sample Database
+
+4) How to add uploader detail inside any entity. For example insdide "SampleSessionEntity"
+    - Added
+        @OneToOne(fetch = FetchType.EAGER)
+        @JoinColumn(name = "uploader_id", insertable = false, updatable = false)
+        @JsonIgnore
+        private UserEntity uploader;
+    - Add inside SampleSessionRes.java
+        private UserResDto uploader;
+
+        public SampleSessionRes setUploader(UserResDto uploader){
+            this.uploader = uploader;
+            return this;
+        }
+
+    - Add inside SampleSessionDtoUtil.java
+        @Autowired
+        public SampleSessionDtoUtil(UserDtoUtil userDtoUtil) {
+            this.userDtoUtil = userDtoUtil;
+        }
+
+    - Update inside SampleSessionDtoUtil.java
+        @Override
+        public SampleSessionRes entityToRes(SampleSessionEntity studySessionEntity) {
+           return new SampleSessionRes()
+               .setId(studySessionEntity.getId())
+               .setUploaderId(studySessionEntity.getUploaderId())
+               .setUploader(userDtoUtil.entityToRes(studySessionEntity.getUploader()));
+           }
+
+4) How to update API placement in Swagar
+
+
+5) Person table implementation flow.
+    - Create_Person.sql
+    - PersionEntity.java
+    - PersonReq.java
+    - PersonRes.java
+    - PersonDtoUtil.java
+    - PersonRepo.java
+    - PersonService.java
+    - PersonServiceImpl.java
+    - PersonController.java
+    Note: For Authority refer Authority.java and Inser_Authority.sql
